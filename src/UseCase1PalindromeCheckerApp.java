@@ -4,25 +4,26 @@ public class UseCase1PalindromeCheckerApp {
 
         String word = "madam";
 
-        // Convert string to char array
-        char[] characters = word.toCharArray();
+        // Convert string to character array
+        char[] chars = word.toCharArray();
 
         int start = 0;
-        int end = characters.length - 1;
+        int end = chars.length - 1;
 
         boolean isPalindrome = true;
 
-        // Two-pointer comparison
+        // Two pointer comparison
         while (start < end) {
-            if (characters[start] != characters[end]) {
+
+            if (chars[start] != chars[end]) {
                 isPalindrome = false;
                 break;
             }
+
             start++;
             end--;
         }
 
-        // Print result
         if (isPalindrome) {
             System.out.println("The word \"" + word + "\" is a Palindrome.");
         } else {
