@@ -1,25 +1,30 @@
+import java.util.Stack;
+
 public class UseCase1PalindromeCheckerApp {
 
     public static void main(String[] args) {
 
         String word = "madam";
 
-        // Convert string to char array
-        char[] characters = word.toCharArray();
+        // Create stack
+        Stack<Character> stack = new Stack<>();
 
-        int start = 0;
-        int end = characters.length - 1;
+        // Push characters into stack
+        for (int i = 0; i < word.length(); i++) {
+            stack.push(word.charAt(i));
+        }
 
         boolean isPalindrome = true;
 
-        // Two-pointer comparison
-        while (start < end) {
-            if (characters[start] != characters[end]) {
+        // Pop characters and compare
+        for (int i = 0; i < word.length(); i++) {
+
+            char poppedChar = stack.pop();
+
+            if (word.charAt(i) != poppedChar) {
                 isPalindrome = false;
                 break;
             }
-            start++;
-            end--;
         }
 
         // Print result
