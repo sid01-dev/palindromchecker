@@ -1,4 +1,6 @@
 import java.util.Stack;
+import java.util.Queue;
+import java.util.LinkedList;
 
 public class UseCase1PalindromeCheckerApp {
 
@@ -6,28 +8,29 @@ public class UseCase1PalindromeCheckerApp {
 
         String word = "madam";
 
-        // Create stack
         Stack<Character> stack = new Stack<>();
+        Queue<Character> queue = new LinkedList<>();
 
-        // Push characters into stack
+        // Push into stack and enqueue into queue
         for (int i = 0; i < word.length(); i++) {
             stack.push(word.charAt(i));
+            queue.add(word.charAt(i));
         }
 
         boolean isPalindrome = true;
 
-        // Pop characters and compare
-        for (int i = 0; i < word.length(); i++) {
+        // Compare stack pop and queue remove
+        while (!stack.isEmpty()) {
 
-            char poppedChar = stack.pop();
+            char stackChar = stack.pop();
+            char queueChar = queue.remove();
 
-            if (word.charAt(i) != poppedChar) {
+            if (stackChar != queueChar) {
                 isPalindrome = false;
                 break;
             }
         }
 
-        // Print result
         if (isPalindrome) {
             System.out.println("The word \"" + word + "\" is a Palindrome.");
         } else {
