@@ -1,32 +1,39 @@
-public class UseCase1PalindromeCheckerApp {
+// PalindromeChecker class encapsulating the palindrome logic
+class PalindromeChecker {
 
-    public static void main(String[] args) {
+    public boolean checkPalindrome(String input) {
 
-        String input = "A man a plan a canal Panama";
-
-        // Normalize string: remove spaces and convert to lowercase
         String normalized = input.replaceAll("\\s+", "").toLowerCase();
-
-        boolean isPalindrome = true;
 
         int start = 0;
         int end = normalized.length() - 1;
 
         while (start < end) {
-
             if (normalized.charAt(start) != normalized.charAt(end)) {
-                isPalindrome = false;
-                break;
+                return false;
             }
-
             start++;
             end--;
         }
 
-        if (isPalindrome) {
-            System.out.println("\"" + input + "\" is a Palindrome (ignoring spaces and case).");
+        return true;
+    }
+}
+
+public class UseCase1PalindromeCheckerApp {
+
+    public static void main(String[] args) {
+
+        String text = "Race Car";
+
+        PalindromeChecker checker = new PalindromeChecker();
+
+        boolean result = checker.checkPalindrome(text);
+
+        if (result) {
+            System.out.println("\"" + text + "\" is a Palindrome.");
         } else {
-            System.out.println("\"" + input + "\" is NOT a Palindrome.");
+            System.out.println("\"" + text + "\" is NOT a Palindrome.");
         }
 
         System.out.println("Program finished.");
